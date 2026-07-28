@@ -71,9 +71,34 @@
         bottom: 1rem;
         font-size: 0.9rem;
       }
+
+      #github-transition-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #ffffff; /* GitHub light mode */
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 9999;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        #github-transition-overlay {
+          background-color: #0d1117; /* GitHub dark mode */
+        }
+      }
+
+      #github-transition-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
     </style>
   </head>
   <body>
+    <div id="github-transition-overlay"></div>
     <div class="container">
       <img class="header" src="./arkana_wordmark.png" alt="arkanaOS logo" fetchpriority="high">
       <p>
@@ -81,8 +106,24 @@
         <br><br>
         <span style="font-size: 1rem; opacity: 0.9;">We aim to make your LFS experience so much better—no excess work, just download and run!</span>
       </p>
-      <a class="cta-button" href="https://github.com/arkana-team/arkanaOS">Get Started</a>
+      <a id="get-started-btn" class="cta-button" href="https://github.com/arkana-team/arkanaOS">Get Started</a>
     </div>
     <div class="footer">Built with love by passionate developers.</div>
+
+    <script>
+      document.getElementById('get-started-btn').addEventListener('click', function(e) {
+        e.preventDefault(); // Stop immediate redirection
+        const targetUrl = this.href;
+        const overlay = document.getElementById('github-transition-overlay');
+        
+        // Start the fade animation
+        overlay.classList.add('active');
+        
+        // Wait for the fade to complete before redirecting
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 500); 
+      });
+    </script>
   </body>
 </html>
