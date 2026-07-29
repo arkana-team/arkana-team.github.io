@@ -1,17 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>arkanaOS — Build Linux, Simply</title>
-    <meta name="description" content="arkanaOS is a project that provides a clean Linux From Scratch experience, without any hassle. Start your journey today.">
-    <meta property="og:title" content="arkanaOS — A simple way to build Linux From Scratch">
-    <meta property="og:description" content="arkanaOS is a project that provides a clean Linux From Scratch experience, without any hassle. Start your journey today.">
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#112233">
+    <title>arkanaOS</title>
+    <meta name="description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:title" content="arkanaOS">
+    <meta property="og:description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
     <meta property="og:url" content="https://arkana-team.github.io">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="arkanaOS">
-    <meta name="twitter:title" content="arkanaOS — A simple way to build Linux From Scratch">
-    <meta name="twitter:description" content="A hassle-free Linux From Scratch experience. Build your system the simple way.">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+    <meta name="twitter:title" content="arkanaOS">
+    <meta name="twitter:description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
 
+    <!-- Fonts and Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="./arkana_wordmark.png" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+      /* Base Styles */
       body {
         margin: 0;
         background: #123;
@@ -19,6 +33,7 @@
         font-family: 'Open Sans', sans-serif;
       }
 
+      /* Layout */
       .container {
         height: 100vh;
         display: flex;
@@ -29,6 +44,15 @@
         padding: 0 2rem;
       }
 
+      .footer {
+        width: 100vw;
+        text-align: center;
+        position: absolute;
+        bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      /* Typography & Elements */
       h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
@@ -40,6 +64,12 @@
         margin-bottom: 2rem;
       }
 
+      img.header {
+        max-width: 400px;
+        height: auto;
+      }
+
+      /* Buttons */
       a.cta-button {
         display: inline-block;
         background-color: #8aa;
@@ -55,25 +85,66 @@
         background-color: #799;
       }
 
-      img.header {
-        max-width: 400px;
+      /* GitHub Transition Overlay */
+      #github-transition-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #ffffff; /* GitHub light mode */
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 9999;
       }
 
-      .footer {
-        width: 100vw;
-        text-align: center;
-        position: absolute;
-        bottom: 1rem;
-        font-size: 0.9rem;
+      @media (prefers-color-scheme: dark) {
+        #github-transition-overlay {
+          background-color: #0d1117; /* GitHub dark mode */
+        }
+      }
+
+      #github-transition-overlay.active {
+        opacity: 1;
+        pointer-events: all;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <img class="header" src="https://raw.githubusercontent.com/arkana-team/branding/refs/heads/main/arkana_wordmark.png"></img>
-      <p>A minimal, source-based Linux distribution that’s simple to build, simple to shape, and yours to command.</p>
-      <a class="cta-button" href="https://github.com/arkana-team/arkanaOS">Get Started</a>
-    </div>
-    <div class="footer">Built with love by passionate developers.</div>
+    <!-- GitHub Theme Transition Overlay -->
+    <div id="github-transition-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="container">
+      <img class="header" src="./arkana_wordmark.png" alt="arkanaOS logo" width="2048" height="512" fetchpriority="high">
+      <p>
+        A project to make the least bloated Linux, from scratch!
+        <br><br>
+        <span style="font-size: 1rem; opacity: 0.9;">We aim to make your LFS experience so much better—no excess work, just download and run!</span>
+      </p>
+      <a id="get-started-btn" class="cta-button" href="https://github.com/arkana-team/arkanaOS">Get Started</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">Built with love by passionate developers.</footer>
+
+    <!-- Scripts -->
+    <script>
+      document.getElementById('get-started-btn').addEventListener('click', function(e) {
+        e.preventDefault(); // Stop immediate redirection
+        
+        const targetUrl = this.href;
+        const overlay = document.getElementById('github-transition-overlay');
+        
+        // Start the fade animation
+        overlay.classList.add('active');
+        
+        // Wait for the fade to complete before redirecting
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 500); 
+      });
+    </script>
   </body>
 </html>
