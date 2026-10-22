@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#112233">
-    <title>arkanaOS</title>
-    <meta name="description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
+    <title>arkanaOS | A classic UNIX workstation, built from scratch</title>
+    <meta name="description" content="An effort to recreate the classic UNIX workstation feel in a lightweight Linux From Scratch distro. It only takes one download to return to the 90s.">
 
     <!-- Open Graph / Social Meta Tags -->
-    <meta property="og:title" content="arkanaOS">
-    <meta property="og:description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
+    <meta property="og:title" content="arkanaOS | A classic UNIX workstation, built from scratch">
+    <meta property="og:description" content="An effort to recreate the classic UNIX workstation feel in a lightweight Linux From Scratch distro. It only takes one download to return to the 90s.">
     <meta property="og:url" content="https://arkana-team.github.io">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="arkanaOS">
-    <meta name="twitter:title" content="arkanaOS">
-    <meta name="twitter:description" content="A project to make the least bloated Linux, from scratch. No excess work, just download and run.">
+    <meta name="twitter:title" content="arkanaOS | A classic UNIX workstation, built from scratch">
+    <meta name="twitter:description" content="An effort to recreate the classic UNIX workstation feel in a lightweight Linux From Scratch distro. It only takes one download to return to the 90s.">
 
     <!-- Fonts and Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,9 @@
 
       /* Layout */
       .container {
-        height: 100vh;
+        min-height: 100vh;
+        min-height: 100svh;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -62,6 +64,24 @@
         font-size: 1.2rem;
         max-width: 600px;
         margin-bottom: 2rem;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      p.project-details {
+        margin: -0.75rem 0 1.75rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
       }
 
       img.header {
@@ -117,17 +137,22 @@
 
     <!-- Main Content -->
     <main class="container">
-      <img class="header" src="./arkana_wordmark.png" alt="arkanaOS logo" width="2048" height="512" fetchpriority="high">
+      <h1 class="sr-only">arkanaOS</h1>
+      <img class="header" src="./arkana_wordmark.png" alt="arkanaOS wordmark" width="2048" height="512" fetchpriority="high">
       <p>
-        A project to make the least bloated Linux, from scratch!
+        An effort to recreate the classic UNIX workstation feel in a lightweight Linux From Scratch distro.
         <br><br>
-        <span style="font-size: 1rem; opacity: 0.9;">We aim to make your LFS experience so much better—no excess work, just download and run!</span>
+        <span style="font-size: 1rem; opacity: 0.9;">It only takes one download to return to the 90s. Built around NsCDE with a Solaris 7-inspired desktop.</span>
       </p>
-      <a id="get-started-btn" class="cta-button" href="https://github.com/arkana-team/arkanaOS">Get Started</a>
+      <p class="project-details">Linux From Scratch · NsCDE desktop · Solaris 7 style</p>
+      <a id="get-started-btn" class="cta-button" href="https://github.com/arkana-team/arkanaOS">Explore arkanaOS</a>
+      <p style="margin: 1rem 0 0; font-size: 0.95rem;">
+        <a href="https://github.com/arkana-team" style="color: inherit;">More from arkana-team</a>
+      </p>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">Built with love by passionate developers.</footer>
+    <footer class="footer">A project by arkana-team · Built for a return to the 90s.</footer>
 
     <!-- Scripts -->
     <script>
