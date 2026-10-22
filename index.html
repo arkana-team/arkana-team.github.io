@@ -27,6 +27,9 @@
     <style>
       /* Base Styles */
       body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         margin: 0;
         background: #123;
         color: #9bb;
@@ -35,23 +38,22 @@
 
       /* Layout */
       .container {
-        min-height: 100vh;
-        min-height: 100svh;
+        flex: 1 0 auto;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 0 2rem;
+        padding: 2.5rem 2rem;
       }
 
       .footer {
-        width: 100vw;
+        width: 100%;
+        box-sizing: border-box;
         text-align: center;
-        position: absolute;
-        bottom: 1rem;
         font-size: 0.9rem;
+        padding: 0 1rem 1rem;
       }
 
       /* Typography & Elements */
@@ -82,6 +84,32 @@
         margin: -0.75rem 0 1.75rem;
         font-size: 0.9rem;
         letter-spacing: 0.04em;
+      }
+
+      p.project-summary {
+        max-width: 640px;
+        margin: 0 0 1.25rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem 1.25rem;
+        margin: 0 0 1.5rem;
+      }
+
+      .project-links a {
+        color: inherit;
+        text-underline-offset: 0.2em;
+      }
+
+      .project-links a:focus-visible,
+      a.cta-button:focus-visible {
+        outline: 2px solid #dce8e8;
+        outline-offset: 4px;
       }
 
       img.header {
@@ -140,11 +168,19 @@
       <h1 class="sr-only">arkanaOS</h1>
       <img class="header" src="./arkana_wordmark.png" alt="arkanaOS wordmark" width="2048" height="512" fetchpriority="high">
       <p>
-        An effort to recreate the classic UNIX workstation feel in a lightweight Linux From Scratch distro.
-        <br><br>
-        <span style="font-size: 1rem; opacity: 0.9;">It only takes one download to return to the 90s. Built around NsCDE with a Solaris 7-inspired desktop.</span>
+        A Linux From Scratch system with the look and feel of a classic 1990s UNIX workstation.
       </p>
-      <p class="project-details">Linux From Scratch · NsCDE desktop · Solaris 7 style</p>
+      <p class="project-details">Linux From Scratch · NsCDE desktop · Solaris 7-inspired styling</p>
+      <p class="project-summary">
+        arkanaOS aims to keep the base system lean while bringing its tools together around a familiar, retro X11 desktop.
+        It is currently in alpha, and development is gradual as the system is tested and improved.
+      </p>
+      <nav class="project-links" aria-label="arkanaOS project repositories">
+        <a href="https://github.com/arkana-team/arkpkg">arkpkg</a>
+        <a href="https://github.com/arkana-team/arkcfg">arkcfg</a>
+        <a href="https://github.com/arkana-team/arkup">arkup</a>
+        <a href="https://github.com/arkana-team/arkpkg-repo">arkpkg-repo</a>
+      </nav>
       <a id="get-started-btn" class="cta-button" href="https://github.com/arkana-team/arkanaOS">Explore arkanaOS</a>
       <p style="margin: 1rem 0 0; font-size: 0.95rem;">
         <a href="https://github.com/arkana-team" style="color: inherit;">More from arkana-team</a>
